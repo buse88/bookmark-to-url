@@ -1,25 +1,19 @@
 {
   "manifest_version": 3,
-  "name": "书签管理器",
+  "name": "Bookmark Search and Navigation",
   "version": "1.0",
-  "permissions": [
-    "bookmarks",
-    "tabs"
-  ],
-  "action": {
-    "default_popup": "popup.html"  // 指定为 popup.html 页面
-  },
+  "description": "快速搜索和导航书签。",
+  "permissions": ["bookmarks", "storage", "tabs"],
   "background": {
     "service_worker": "background.js"
   },
-  "content_scripts": [
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "resources": ["navigation.html", "navigation.js", "style.css"],
+      "matches": ["<all_urls>"]
     }
-  ],
-  "host_permissions": [
-    "http://*/*",
-    "https://*/*"
   ]
 }

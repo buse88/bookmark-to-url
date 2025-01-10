@@ -6,36 +6,25 @@ document.addEventListener("DOMContentLoaded", () => {
   // 渲染书签列表
   function renderBookmarks(bookmarks, parentElement) {
     parentElement.innerHTML = ""; // 清空列表
-
     bookmarks.forEach((bookmark) => {
       const li = document.createElement("li");
-      li.classList.add("bookmark-item");
 
       if (bookmark.url) {
-        // 如果是书签，创建链接
         const a = document.createElement("a");
         a.textContent = bookmark.title;
         a.href = bookmark.url;
         a.target = "_blank";
-        a.classList.add("bookmark-link");
         li.appendChild(a);
       } else {
-        // 如果是文件夹，创建文件夹标题
-        const folderTitle = document.createElement("div");
+        const folderTitle = document.createElement("span");
         folderTitle.textContent = bookmark.title || "未命名文件夹";
-        folderTitle.classList.add("folder-title");
-
-        // 默认展开所有文件夹
-        const ul = document.createElement("ul");
-        renderBookmarks(bookmark.children, ul);
-
-        // 监听点击事件，切换文件夹的展开和收起
-        folderTitle.addEventListener("click", () => {
-          ul.classList.toggle("folder-collapsed");
-        });
-
         li.appendChild(folderTitle);
-        li.appendChild(ul);
+
+        if (bookmark.children) {
+          const ul = document.createElement("ul");
+          renderBookmarks(bookmark.children, ul);
+          li.appendChild(ul);
+        }
       }
 
       parentElement.appendChild(li);

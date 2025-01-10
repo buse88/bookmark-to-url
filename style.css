@@ -35,11 +35,7 @@ body {
   text-align: left;
 }
 
-/* 控制文件夹内容的展开与收缩 */
-.folder-content {
-  display: block;
-}
-
+/* 收缩状态的文件夹 */
 .folder-collapsed {
   display: none;
 }
@@ -92,19 +88,4 @@ ul {
 
 #open-navigation:hover {
   background-color: #0056b3;
-}
-
-/* 新增按钮的样式 */
-#toggle-folders {
-  padding: 10px 15px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-#toggle-folders:hover {
-  background-color: #218838;
 }
