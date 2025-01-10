@@ -1,0 +1,110 @@
+/* 控制书签和文件夹的基本样式 */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+#search {
+  width: 100%;
+  padding: 10px;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#bookmark-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 控制文件夹标题的样式 */
+.folder-title {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px;
+  background-color: #d1e7fd;
+  border: 1px solid #b0c4de;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+}
+
+/* 控制文件夹内容的展开与收缩 */
+.folder-content {
+  display: block;
+}
+
+.folder-collapsed {
+  display: none;
+}
+
+/* 文件夹中的子书签列表样式 */
+ul {
+  list-style-type: none;
+  padding-left: 20px;
+  margin: 0;
+}
+
+/* 书签链接的样式 */
+.bookmark-link {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 14px;
+  padding: 5px 0;
+  display: block;
+}
+
+.bookmark-link:hover {
+  text-decoration: underline;
+}
+
+/* 书签项的样式 */
+.bookmark-item {
+  padding: 5px 0;
+}
+
+/* 搜索框的样式 */
+#search {
+  font-size: 16px;
+  padding: 8px;
+  margin: 10px 0;
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+#open-navigation {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+#open-navigation:hover {
+  background-color: #0056b3;
+}
+
+/* 新增按钮的样式 */
+#toggle-folders {
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+#toggle-folders:hover {
+  background-color: #218838;
+}
