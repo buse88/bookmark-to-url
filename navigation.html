@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>书签导航</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>书签导航</title>
+  <style>
+    /* 文件夹折叠时隐藏子项 */
+    .folder-collapsed {
+      display: none;
+    }
+
+    /* 添加一些样式 */
+    .folder-title {
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .bookmark-link {
+      text-decoration: none;
+      color: #000;
+    }
+
+    .bookmark-item {
+      list-style-type: none;
+      margin: 5px 0;
+    }
+
+    #search {
+      margin-bottom: 10px;
+      padding: 5px;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-    <input type="text" id="search" placeholder="搜索书签">
-    <ul id="bookmark-list"></ul>
-    <button id="open-navigation">打开导航页面</button>
-    <script src="navigation.js"></script>
+  <!-- 搜索框 -->
+  <input type="text" id="search" placeholder="搜索书签..." />
+
+  <!-- 用于显示书签列表 -->
+  <ul id="bookmark-list"></ul>
+
+  <script src="navigation.js"></script> <!-- 确保 navigation.js 文件正确加载 -->
 </body>
 </html>

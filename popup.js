@@ -6,25 +6,37 @@ document.addEventListener("DOMContentLoaded", () => {
   // 渲染书签列表
   function renderBookmarks(bookmarks, parentElement) {
     parentElement.innerHTML = ""; // 清空列表
+
     bookmarks.forEach((bookmark) => {
       const li = document.createElement("li");
+      li.classList.add("bookmark-item");
 
       if (bookmark.url) {
+        // 如果是书签，创建链接
         const a = document.createElement("a");
         a.textContent = bookmark.title;
         a.href = bookmark.url;
         a.target = "_blank";
+        a.classList.add("bookmark-link");
         li.appendChild(a);
-      } else {
-        const folderTitle = document.createElement("span");
+      } else if (bookmark.children) {
+        // 如果是文件夹，创建文件夹标题
+        const folderTitle = document.createElement("div");
         folderTitle.textContent = bookmark.title || "未命名文件夹";
-        li.appendChild(folderTitle);
+        folderTitle.classList.add("folder-title");
+        folderTitle.style.cursor = "pointer";
 
-        if (bookmark.children) {
-          const ul = document.createElement("ul");
-          renderBookmarks(bookmark.children, ul);
-          li.appendChild(ul);
-        }
+        // 默认展开所有文件夹，渲染子书签
+        const ul = document.createElement("ul");
+        renderBookmarks(bookmark.children, ul);
+
+        // 点击文件夹标题时切换展开和折叠
+        folderTitle.addEventListener("click", () => {
+          ul.classList.toggle("folder-collapsed");
+        });
+
+        li.appendChild(folderTitle);
+        li.appendChild(ul);
       }
 
       parentElement.appendChild(li);
@@ -54,13 +66,13 @@ document.addEventListener("DOMContentLoaded", () => {
     return filtered;
   }
 
-  // 获取所有书签
+  // 获取书签树
   chrome.bookmarks.getTree((bookmarks) => {
     renderBookmarks(bookmarks, bookmarkList);
 
-    // 监听搜索输入
+    // 监听搜索框输入
     searchInput.addEventListener("input", (event) => {
-      const query = event.target.value;
+      const query = event.target.value.trim();
       const filtered = searchBookmarks(query, bookmarks);
       renderBookmarks(filtered, bookmarkList);
     });
