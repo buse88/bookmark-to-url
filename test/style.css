@@ -1,0 +1,63 @@
+/* 容器布局：左右分栏 */
+.container {
+  display: flex;
+  height: 100vh; /* 让页面占满屏幕 */
+}
+
+.left-panel {
+  width: 250px; /* 左侧初始宽度 */
+  overflow-y: auto;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-right: 1px solid #ddd;
+}
+
+.right-panel {
+  flex-grow: 1; /* 右侧自适应 */
+  padding: 10px;
+  overflow-y: auto;
+}
+
+/* 分割线的样式 */
+.divider {
+  width: 5px;
+  cursor: ew-resize;
+  background-color: #ccc;
+  height: 100%;
+}
+
+/* 文件夹平铺显示 */
+.folder {
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.folder ul {
+  list-style: none;
+  padding-left: 20px;
+}
+
+.bookmark-item {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+/* 地球标志和网址样式 */
+.earth-icon {
+  margin-right: 5px;
+}
+
+.bookmark-url {
+  margin-top: 5px;
+}
+
+.bookmark-title {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.bookmark-link {
+  text-decoration: none;
+  color: #000;
+}

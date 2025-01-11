@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>书签导航</title>
+  <style>
+    /* 布局样式 */
+    #search-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    #open-navigation {
+      white-space: nowrap;
+      background-color: #add8e6;
+      border: 1px solid #7ec8e6;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-right: 10px; /* 按钮与搜索框之间的间距 */
+    }
+
+    #search {
+      flex-grow: 1; /* 搜索框自动扩展填满剩余空间 */
+      padding: 5px;
+    }
+
+    /* 书签样式 */
+    .folder-collapsed {
+      display: none;
+    }
+
+    .folder-title {
+      font-weight: bold;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+
+    .bookmark-link {
+      text-decoration: none;
+      color: #000;
+    }
+
+    .bookmark-item {
+      list-style-type: none;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- 搜索框和导航按钮容器 -->
+  <div id="search-container">
+    <button id="open-navigation">打开导航页面</button>
+    <input type="text" id="search" placeholder="搜索书签..." />
+  </div>
+
+  <!-- 用于显示书签列表 -->
+  <ul id="bookmark-list"></ul>
+
+  <script src="popup.js"></script>
+</body>
+</html>
