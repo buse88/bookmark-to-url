@@ -1,19 +1,32 @@
 {
-  "manifest_version": 3,
-  "name": "Bookmark Search and Navigation",
-  "version": "1.0",
-  "description": "快速搜索和导航书签。",
-  "permissions": ["bookmarks", "storage", "tabs"],
-  "background": {
-    "service_worker": "background.js"
-  },
-  "action": {
-    "default_popup": "popup.html"
-  },
-  "web_accessible_resources": [
-    {
-      "resources": ["navigation.html", "navigation.js", "style.css"],
-      "matches": ["<all_urls>"]
-    }
-  ]
+    "manifest_version": 3,
+    "name": "书签导航",
+    "version": "1.0",
+    "description": "将浏览器的书签转换成网页形式的导航，并带有搜索书签功能的浏览器插件。",
+    "permissions": [
+        "bookmarks",
+        "tabs"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "images/icon16.png",
+            "48": "images/icon48.png",
+            "128": "images/icon128.png"
+        }
+    },
+    "icons": {
+        "16": "images/icon16.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": ["navigation.html"],
+            "matches": ["<all_urls>"]
+        }
+    ]
 }
