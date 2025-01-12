@@ -35,11 +35,10 @@ document.addEventListener("DOMContentLoaded", () => {
         folderTitle.textContent = bookmark.title || "未命名文件夹";
         folderTitle.classList.add("folder-title");
 
-        // 默认展开所有文件夹
         const ul = document.createElement("ul");
         renderBookmarks(bookmark.children, ul);
 
-        // 监听点击事件，切换文件夹的展开和收起
+        // 点击文件夹标题时切换展开和折叠
         folderTitle.addEventListener("click", () => {
           ul.classList.toggle("folder-collapsed");
         });
@@ -56,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function searchBookmarks(query, bookmarks) {
     const filtered = [];
     bookmarks.forEach((bookmark) => {
+      // 如果是书签，匹配标题或 URL
       if (
         bookmark.url &&
         (bookmark.title.toLowerCase().includes(query.toLowerCase()) ||
@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         filtered.push(bookmark);
       } else if (bookmark.children) {
+        // 如果是文件夹，递归搜索子书签
         const children = searchBookmarks(query, bookmark.children);
         if (children.length > 0) {
           filtered.push({
@@ -75,15 +76,16 @@ document.addEventListener("DOMContentLoaded", () => {
     return filtered;
   }
 
-  // 获取所有书签
+  // 获取书签树
   chrome.bookmarks.getTree((bookmarks) => {
     if (!bookmarks || bookmarks.length === 0) {
       console.error("No bookmarks found.");
       return;
     }
+
     renderBookmarks(bookmarks, bookmarkList);
 
-    // 监听搜索输入
+    // 监听搜索框输入
     searchInput.addEventListener("input", (event) => {
       const query = event.target.value.trim();
       const filtered = searchBookmarks(query, bookmarks);
